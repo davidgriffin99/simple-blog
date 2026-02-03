@@ -5,72 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Simple Blog</title>
   <style>
-    body { max-width: 720px; margin: 40px auto; padding: 0 20px; font-family: Georgia, serif; line-height: 1.7; color: #333; }
-    h1 { font-size: 2em; margin-bottom: 0.5em; border-bottom: 2px solid #333; padding-bottom: 0.3em; }
-    .subtitle { color: #666; font-size: 1.1em; margin-bottom: 2em; }
-    .post-list { list-style: none; padding: 0; }
-    .post-item { margin-bottom: 1.5em; padding-bottom: 1.5em; border-bottom: 1px solid #eee; }
-    .post-item:last-child { border-bottom: none; }
-    .post-title { font-size: 1.3em; margin: 0 0 0.3em 0; }
-    .post-title a { color: #1a5f7a; text-decoration: none; }
-    .post-title a:hover { text-decoration: underline; }
-    .post-date { color: #888; font-size: 0.9em; }
-    .loading { color: #888; font-style: italic; }
-    .error { color: #c00; }
-    .empty { color: #666; font-style: italic; }
-    .footer { margin-top: 3em; padding-top: 1em; border-top: 1px solid #eee; font-size: 0.85em; color: #aaa; }
+    body {
+      max-width: 720px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-family: Georgia, serif;
+      line-height: 1.7;
+      color: #333;
+      background: #fafafa;
+    }
+    header {
+      margin-bottom: 3em;
+      padding-bottom: 1em;
+      border-bottom: 2px solid #eee;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 0.2em;
+      color: #222;
+    }
+    .tagline {
+      color: #666;
+      font-style: italic;
+    }
+    .post-item {
+      background: #fff;
+      padding: 1.5em;
+      margin-bottom: 1em;
+      border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+      transition: box-shadow 0.2s ease;
+    }
+    .post-item:hover {
+      box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    }
+    .post-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+    }
+    .post-title {
+      font-size: 1.3em;
+      margin: 0 0 0.3em 0;
+      color: #333;
+    }
+    .post-link:hover .post-title {
+      color: #0066cc;
+    }
+    .post-date {
+      color: #888;
+      font-size: 0.9em;
+    }
+    .no-posts {
+      text-align: center;
+      color: #888;
+      padding: 3em 0;
+    }
+    footer {
+      margin-top: 3em;
+      padding-top: 1em;
+      border-top: 1px solid #eee;
+      font-size: 0.85em;
+      color: #aaa;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
-  <h1>Simple Blog</h1>
-  <p class="subtitle">Screenshot-powered blog posts</p>
-  <div id="posts-container">
-    <p class="loading">Loading posts...</p>
-  </div>
-  <div class="footer">Powered by Flux Platform</div>
-  <script>
-    (function() {
-      const container = document.getElementById('posts-container');
-
-      fetch('posts.json')
-        .then(response => {
-          if (!response.ok) throw new Error('Failed to load posts');
-          return response.json();
-        })
-        .then(data => {
-          const posts = data.posts || [];
-          if (posts.length === 0) {
-            container.innerHTML = '<p class="empty">No posts yet. Send a screenshot to the Telegram bot to create your first post!</p>';
-            return;
-          }
-
-          // Sort by date descending (newest first)
-          posts.sort((a, b) => new Date(b.date) - new Date(a.date));
-
-          let html = '<ul class="post-list">';
-          posts.forEach(post => {
-            const dateObj = new Date(post.date);
-            const dateStr = dateObj.toLocaleDateString('en-US', {
-              year: 'numeric', month: 'long', day: 'numeric'
-            });
-            html += '<li class="post-item">';
-            html += '<h2 class="post-title"><a href="' + post.url + '">' + escapeHtml(post.title) + '</a></h2>';
-            html += '<div class="post-date">' + dateStr + '</div>';
-            html += '</li>';
-          });
-          html += '</ul>';
-          container.innerHTML = html;
-        })
-        .catch(err => {
-          container.innerHTML = '<p class="empty">No posts yet. Send a screenshot to the Telegram bot to create your first post!</p>';
-        });
-
-      function escapeHtml(text) {
-        const div = document.createElement('div');
-        div.textContent = text;
-        return div.innerHTML;
-      }
-    })();
-  </script>
+  <header>
+    <h1>Simple Blog</h1>
+    <p class="tagline">Screenshot-powered blogging via Flux Platform</p>
+  </header>
+  <main>
+      <article class="post-item">
+        <a href="blog/post-20260203-002446/" class="post-link">
+          <h2 class="post-title">Untitled Post</h2>
+          <time class="post-date">February 03, 2026</time>
+        </a>
+      </article>
+      <article class="post-item">
+        <a href="blog/post-20260203-192635/" class="post-link">
+          <h2 class="post-title">Untitled Post</h2>
+          <time class="post-date">February 03, 2026</time>
+        </a>
+      </article>
+      <article class="post-item">
+        <a href="blog/post-20260203-221538/" class="post-link">
+          <h2 class="post-title">Untitled Post</h2>
+          <time class="post-date">February 03, 2026</time>
+        </a>
+      </article>
+      <article class="post-item">
+        <a href="blog/post-20260203-221944/" class="post-link">
+          <h2 class="post-title">Untitled Post</h2>
+          <time class="post-date">February 03, 2026</time>
+        </a>
+      </article>
+      <article class="post-item">
+        <a href="blog/post-20260203-222215/" class="post-link">
+          <h2 class="post-title">The Silent Narrative of "Fish Test 3"</h2>
+          <time class="post-date">February 03, 2026</time>
+        </a>
+      </article>
+  </main>
+  <footer>
+    Generated by Flux Platform &mdash; Screenshot to Blog
+  </footer>
 </body>
 </html>
