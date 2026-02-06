@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>How This Was Made — Great Company Name</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f9fafb; color:#111827; padding:24px; line-height:1.6; }
+  .container { max-width:800px; margin:0 auto; }
+  h1 { font-size:24px; margin-bottom:2px; }
+  .company { color:#3b82f6; font-size:14px; font-weight:600; margin-bottom:2px; }
+  .subtitle { color:#6b7280; margin-bottom:32px; font-size:13px; }
+  .nav { margin-bottom:20px; }
+  .nav a { color:#3b82f6; text-decoration:none; margin-right:16px; font-size:13px; }
+  .nav a:hover { text-decoration:underline; }
+  h2 { font-size:18px; margin-top:32px; margin-bottom:8px; padding-bottom:6px; border-bottom:2px solid #e5e7eb; }
+  h3 { font-size:15px; margin-top:20px; margin-bottom:6px; color:#374151; }
+  p { margin-bottom:12px; color:#374151; font-size:14px; }
+  a { color:#3b82f6; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .diagram { background:#f0f9ff; border:1px solid #bfdbfe; border-radius:8px; padding:20px; margin:16px 0; font-family:'Courier New',monospace; font-size:13px; line-height:1.8; white-space:pre; overflow-x:auto; }
+  .callout { background:#fffbeb; border-left:4px solid #eab308; padding:12px 16px; border-radius:0 8px 8px 0; margin:16px 0; font-size:13px; }
+  .callout-blue { background:#eff6ff; border-left:4px solid #3b82f6; padding:12px 16px; border-radius:0 8px 8px 0; margin:16px 0; font-size:13px; }
+  .callout-green { background:#f0fdf4; border-left:4px solid #22c55e; padding:12px 16px; border-radius:0 8px 8px 0; margin:16px 0; font-size:13px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:12px 0; }
+  th { text-align:left; padding:8px 12px; background:#f9fafb; color:#6b7280; font-weight:600; font-size:11px; text-transform:uppercase; border-bottom:2px solid #e5e7eb; }
+  td { padding:8px 12px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+  code { background:#f3f4f6; padding:1px 5px; border-radius:3px; font-size:13px; }
+  .tag { display:inline-block; background:#e5e7eb; color:#374151; padding:2px 8px; border-radius:4px; font-size:11px; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:4px; vertical-align:middle; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav"><a href="index.html">Home</a> <a href="portfolio-report.html">Portfolio</a> <a href="risk-report.html">Risk</a> <a href="pipeline-report.html">Pipeline</a> <a href="vendor-report.html">Vendors</a> <a href="lessons-report.html">Lessons</a> <a href="hierarchy.html">Hierarchy</a> <a href="how-this-was-made.html"><strong>How This Works</strong></a></div>
+  <div class="company">Great Company Name</div>
+  <h1>How This Was Made</h1>
+  <div class="subtitle">A one-pager explaining the data model, features, and how everything connects</div>
+
+  <!-- ============================================================ -->
+  <h2>The Problem</h2>
+  <p>Managing a portfolio of ~50 real estate and infrastructure development sites — EV charging, solar, battery storage — spread across America. Each site has different owners, vendors, permits, risks, and politics. We need a way to see the big picture, track what's blocked, learn from failures, and generate reports without drowning in spreadsheets.</p>
+
+  <!-- ============================================================ -->
+  <h2>The Hierarchy: Program → Project → Site</h2>
+  <p>Everything is organized in three levels. This pattern comes from <strong>Sitetracker</strong>, the industry standard for multi-site infrastructure rollouts. See it live on the <a href="hierarchy.html">Hierarchy page</a>.</p>
+
+  <div class="diagram">Program  "California EV Network 2027"        ← The strategic initiative
+└── Project  "LA Metro"                        ← A market or region
+    ├── Site  "Santa Monica Main St"           ← A physical location
+    ├── Site  "Venice Blvd Station"
+    └── Site  "Pasadena Colorado Blvd" (dead)
+
+Program  "Texas Solar Rollout 2026"
+└── Project  "Austin Metro Solar"
+    └── Site  "Round Rock Community Solar"</div>
+
+  <table>
+    <thead><tr><th>Level</th><th>What it represents</th><th>Example</th><th>Key question</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Program</strong></td><td>A strategic initiative with a charter, budget, and sponsor</td><td>"Deploy 100 EV sites across California by 2027"</td><td>Why are we doing this?</td></tr>
+      <tr><td><strong>Project</strong></td><td>A market or region within a program</td><td>"LA Metro" — 20 sites target</td><td>What gap are we filling?</td></tr>
+      <tr><td><strong>Site</strong></td><td>A specific physical location with an address</td><td>"123 Main St, Santa Monica"</td><td>Where exactly?</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout"><strong>Each level can be confirmed or exploring.</strong> A Program can exist with zero projects (still in planning). A Project can have zero sites (still scoping markets). This lets us track opportunities early, before committing.</div>
+
+  <!-- ============================================================ -->
+  <h2>Site Stages</h2>
+  <p>Every site moves through a pipeline of stages. The <a href="pipeline-report.html">Pipeline Report</a> shows sites grouped by stage with time-in-stage tracking.</p>
+
+  <div class="diagram">Searching → Candidate → Selected → Acquisition → Due Diligence → Entitlements → Permitting → Construction → Commissioning → Operating
+                                                                                                                          ↘ On Hold
+                                                                                                                          ↘ Dead</div>
+
+  <p>There is no separate "status" field — <strong>stage is the single source of truth</strong>. A dead site is simply <code>stage: dead</code>. This avoids the confusion of having both a status and a stage that can contradict each other.</p>
+
+  <h3>Stage History</h3>
+  <p>Every stage transition is recorded with a timestamp. This enables analytics like <em>"permitting in California averages 4.2 months"</em> or <em>"how long did Santa Monica spend as a candidate?"</em></p>
+
+  <!-- ============================================================ -->
+  <h2>Health & Risk</h2>
+  <p>Stages tell you <em>where</em> a site is. Health and risk tell you <em>how it's doing</em>. See the <a href="risk-report.html">Risk Report</a> for the full breakdown.</p>
+
+  <h3>Health</h3>
+  <p>A quick traffic light:</p>
+  <table>
+    <tbody>
+      <tr><td><span class="dot" style="background:#22c55e"></span> <strong>On track</strong></td><td>No issues, progressing normally</td></tr>
+      <tr><td><span class="dot" style="background:#eab308"></span> <strong>Needs attention</strong></td><td>Something's slow or uncertain — not blocked, but watch it</td></tr>
+      <tr><td><span class="dot" style="background:#f97316"></span> <strong>At risk</strong></td><td>Significant concern, may become blocked</td></tr>
+      <tr><td><span class="dot" style="background:#ef4444"></span> <strong>Blocked</strong></td><td>Cannot progress — a specific blocker is recorded</td></tr>
+    </tbody>
+  </table>
+
+  <h3>Risk Score</h3>
+  <p>Four dimensions, each scored 0–3. The total (max 12) is the risk score.</p>
+  <table>
+    <thead><tr><th>Dimension</th><th>0</th><th>1</th><th>2</th><th>3</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Political</strong></td><td>No issues</td><td>Minor concern</td><td>Active opposition</td><td>Hostile environment</td></tr>
+      <tr><td><strong>Regulatory</strong></td><td>Clear path</td><td>Some complexity</td><td>Major hurdles</td><td>Blocked by regulation</td></tr>
+      <tr><td><strong>Technical</strong></td><td>Standard build</td><td>Minor challenges</td><td>Complex engineering</td><td>Unproven approach</td></tr>
+      <tr><td><strong>Financial</strong></td><td>On budget</td><td>Minor overrun</td><td>Significant overrun</td><td>Viability in question</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================================ -->
+  <h2>Lessons Learned</h2>
+  <p>When a site dies or something goes wrong (or right), we capture it as a formal lesson. These are first-class records, not buried in meeting notes. See the <a href="lessons-report.html">Lessons Report</a>.</p>
+
+  <p>Each lesson captures:</p>
+  <table>
+    <tbody>
+      <tr><td><strong>Situation</strong></td><td>What happened</td></tr>
+      <tr><td><strong>What worked / didn't</strong></td><td>Specifics, not vague takeaways</td></tr>
+      <tr><td><strong>Recommendation</strong></td><td>Actionable advice for next time</td></tr>
+      <tr><td><strong>Applies to</strong></td><td>Which tech types, regions, stages this is relevant for</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout-green"><strong>Example:</strong> After the Pasadena site died because the landlord backed out, we recorded: <em>"Never start permitting without a signed LOI with penalty clause."</em> This lesson is now linked to the dead site's post-mortem and tagged so it surfaces when starting similar acquisitions.</div>
+
+  <!-- ============================================================ -->
+  <h2>Decisions Log</h2>
+  <p>Major decisions are recorded on each site with the rationale, who made them, and whether they're reversible. This prevents the "why did we do that?" problem six months later.</p>
+
+  <div class="callout-blue"><strong>Example:</strong> Santa Monica — "Go with 8+2 charger config instead of 10 Level 2." Rationale: DC fast chargers have higher utilization. Made by Sarah. Reversible: yes.</div>
+
+  <!-- ============================================================ -->
+  <h2>Dead Sites & Post-Mortems</h2>
+  <p>When a site is killed, it doesn't disappear. It moves to <code>stage: dead</code> and gets a post-mortem recording:</p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li>Why it died</li>
+    <li>Sunk cost and time invested</li>
+    <li>Linked lessons learned</li>
+    <li>Whether it could be revived, and under what conditions</li>
+  </ul>
+  <p>Dead sites still appear in the <a href="portfolio-report.html">Portfolio</a> and <a href="hierarchy.html">Hierarchy</a> views. Forgetting failures is how you repeat them.</p>
+
+  <!-- ============================================================ -->
+  <h2>Vendors</h2>
+  <p>A master <a href="vendor-report.html">vendor directory</a> tracks contractors and equipment suppliers. Each vendor has capabilities, contacts, an internal rating (1–5 stars), and an owner who manages the relationship.</p>
+  <p>When a vendor is assigned to a site, their name is stored directly on the site record (denormalized) so we can display it without extra database lookups.</p>
+
+  <!-- ============================================================ -->
+  <h2>Local Intel</h2>
+  <p>Real estate development is local. We track anything that could affect a site:</p>
+  <table>
+    <thead><tr><th>Type</th><th>Example</th></tr></thead>
+    <tbody>
+      <tr><td>Political</td><td>City council elections, NIMBY groups, council member positions</td></tr>
+      <tr><td>Regulatory</td><td>Rule changes, new permit requirements</td></tr>
+      <tr><td>Environmental</td><td>Wildfires, smoke, flooding, earthquakes</td></tr>
+      <tr><td>Weather</td><td>Heat waves, construction windows</td></tr>
+      <tr><td>Community</td><td>Neighborhood opposition, local news</td></tr>
+      <tr><td>Competitive</td><td>Other developers in the area</td></tr>
+    </tbody>
+  </table>
+  <p>Intel lives at the level it matters — program-level for industry-wide news, project-level for regional, site-level for location-specific.</p>
+
+  <!-- ============================================================ -->
+  <h2>The Reports</h2>
+  <p>All reports are generated from live Firestore data. They're static HTML — no server, no login, just regenerate on demand.</p>
+  <table>
+    <thead><tr><th>Report</th><th>Purpose</th><th>Key features</th></tr></thead>
+    <tbody>
+      <tr><td><a href="index.html">Dashboard</a></td><td>At-a-glance overview</td><td>Programs/projects/sites counts, needs attention, recent activity</td></tr>
+      <tr><td><a href="portfolio-report.html">Portfolio</a></td><td>All sites in one table</td><td>Stage, health, risk bars, owners, next milestones</td></tr>
+      <tr><td><a href="hierarchy.html">Hierarchy</a></td><td>Program → Project → Site tree</td><td>Nested view showing the full organizational structure</td></tr>
+      <tr><td><a href="risk-report.html">Risk</a></td><td>What's risky and why</td><td>Ranked by score, 4-dimension breakdown bars</td></tr>
+      <tr><td><a href="pipeline-report.html">Pipeline</a></td><td>Where things are in the process</td><td>Sites by stage, days in stage, full journey history</td></tr>
+      <tr><td><a href="vendor-report.html">Vendors</a></td><td>Who's working on what</td><td>Ratings, capabilities, site assignments, contacts</td></tr>
+      <tr><td><a href="lessons-report.html">Lessons</a></td><td>What we've learned</td><td>Post-mortems, recommendations, decision log</td></tr>
+    </tbody>
+  </table>
+
+  <!-- ============================================================ -->
+  <h2>How It's Built</h2>
+
+  <div class="diagram">                    ┌──→ Dashboard (index.html)
+                    ├──→ Portfolio Report
+                    ├──→ Hierarchy View
+Firestore ──────────┼──→ Risk Report
+(5 collections)     ├──→ Pipeline Report
+                    ├──→ Vendor Report
+                    └──→ Lessons Report
+
+Collections: re_programs, re_projects, re_sites, re_vendors, re_lessons</div>
+
+  <p><strong>Data layer:</strong> Google Cloud Firestore (NoSQL document database). Each entity is a document in its collection. Sites store <code>program_id</code> and <code>project_id</code> for easy filtering up the hierarchy.</p>
+
+  <p><strong>Reports:</strong> A Python script reads all collections, generates static HTML files. No framework, no build step. Regenerate anytime with one command.</p>
+
+  <p><strong>Design decisions:</strong></p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li><strong>Stage replaces status</strong> — one field, no contradictions</li>
+    <li><strong>Stage history</strong> — timestamps on every transition for duration analytics</li>
+    <li><strong>Logs on every entity</strong> — append-only journals at program, project, site, and vendor level</li>
+    <li><strong>Vendor names denormalized</strong> — stored on site records to avoid extra lookups</li>
+    <li><strong>Risk = sum of 4 sub-scores</strong> — each 0–3, max 12, simple and consistent</li>
+    <li><strong>Similarity via tags</strong> — no bidirectional links to maintain, just shared tags</li>
+  </ul>
+
+  <!-- ============================================================ -->
+  <h2>Beyond Reporting: Intelligence</h2>
+  <p>Static reports are table stakes. The real value is in things that <em>actively help you make better decisions faster</em>.</p>
+
+  <h3>Real-Time Local Intel via SuperGrok API</h3>
+  <p>An LLM continuously mines the <strong>SuperGrok API</strong> (Grok with real-time X/web access) for the latest information on every region and locality in the portfolio. SuperGrok is uniquely valuable here because <strong>it has access to real-time, hyper-local news</strong> that traditional news APIs miss — the kind of information that actually affects development timelines:</p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li><strong>Wildfires, smoke advisories, extreme heat</strong> — construction crew safety, outdoor work restrictions</li>
+    <li><strong>Changing city regulations</strong> — new permit requirements, zoning changes, moratoriums</li>
+    <li><strong>Local political shifts</strong> — council member elections, NIMBY group formation, public hearings</li>
+    <li><strong>Utility and grid issues</strong> — interconnection queue changes, transformer availability, rate changes</li>
+    <li><strong>Competitor activity</strong> — other developers filing permits in your target cities</li>
+    <li><strong>Community sentiment</strong> — protests, local opposition, media coverage of similar projects nearby</li>
+  </ul>
+  <div class="callout"><strong>Example:</strong> Before a Santa Monica city council hearing, the system automatically pulls: recent battery storage protests in LA County, what arguments NIMBY groups are currently using, any new state rebate programs announced this week, and whether the council member up for re-election has made any public statements about EV infrastructure. This intel gets attached to the site record and surfaces in the <a href="lessons-report.html">Lessons</a> and meeting prep.</div>
+
+  <h3>Lessons Learned → Playbooks</h3>
+  <p>Every dead site, every blocker, every surprise gets captured as a formal lesson. Over time, these lessons compound into something more powerful: <strong>playbooks</strong>.</p>
+  <p>A playbook is an auto-generated, continuously updated guide for a specific scenario — built from real experience across the portfolio, not generic advice:</p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li><strong>"Battery storage in California"</strong> — every regulatory hurdle we've hit, what worked, what didn't, typical timelines by jurisdiction</li>
+    <li><strong>"EV charging in HOA-controlled areas"</strong> — landlord negotiation lessons, common objections, successful approaches</li>
+    <li><strong>"Solar on brownfield sites"</strong> — environmental assessment gotchas, remediation timelines, financing structures that worked</li>
+  </ul>
+  <div class="callout-green"><strong>The flywheel:</strong> More sites → more lessons → better playbooks → faster execution on new sites → fewer dead sites → better ROI. A site that took 8 months in 2026 should take 5 months in 2027 because we've already seen every blocker and know how to handle it.</div>
+
+  <h3>Meeting Prep Generator</h3>
+  <p>Before any city council meeting, planning commission hearing, or vendor negotiation, the system auto-generates a briefing package:</p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li>Site status summary and recent activity</li>
+    <li>Real-time local news from SuperGrok (opposition, political climate, recent similar decisions)</li>
+    <li>Relevant lessons from similar hearings across the portfolio</li>
+    <li>Talking points and FAQ based on what's worked before</li>
+    <li>Key contacts and their known positions</li>
+  </ul>
+
+  <h3>Predictive Alerts</h3>
+  <p>Instead of waiting for something to go wrong:</p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li><strong>Permit expiry warnings</strong> — "Encroachment permit on Venice expires in 90 days, renewal takes 60"</li>
+    <li><strong>Stage duration anomalies</strong> — "Santa Monica has been in permitting 45 days, average for this jurisdiction is 30"</li>
+    <li><strong>Risk score trending up</strong> — "Austin political risk increased after NIMBY group formed in Cedar Park"</li>
+    <li><strong>Vendor capacity</strong> — "ABC Electric is now on 4 active sites, historically quality drops above 3"</li>
+  </ul>
+
+  <!-- ============================================================ -->
+  <h2>Access It From Anywhere</h2>
+  <p>The data lives in one place (Firestore). The interface is whatever's convenient at the moment. This simple tracker can be accessed via:</p>
+
+  <div class="diagram">                         ┌──→ VS Code / Claude Code (chat interface — deep queries, analysis)
+                         ├──→ Telegram / WhatsApp (quick updates from your phone)
+                         ├──→ Slack (team alerts, channel per program)
+  Firestore ─────────────┼──→ Email (weekly digests, forward-to-log)
+  (single source         ├──→ Website (these reports — shareable links)
+   of truth)             ├──→ PowerPoint / PDF (exec decks, board packages)
+                         └──→ Printouts (old school works too)</div>
+
+  <p>The key insight: <strong>you don't need to learn a new tool</strong>. Ask a question in whatever channel you're already in — Slack, a chat window, a text message — and the same data answers it. Update a site status from your phone while standing on the construction site. Generate a board deck from your laptop. Print a one-pager for a meeting. Same data, different doors.</p>
+
+  <!-- ============================================================ -->
+  <h2>What's Next</h2>
+  <p>This is the data model validation phase. Immediate next steps:</p>
+  <ul style="margin:8px 0 12px 20px;font-size:14px;color:#374151">
+    <li><strong>Telegram bot</strong> — <code>/property list</code>, <code>/property 12 status blocked</code>, quick updates from your phone</li>
+    <li><strong>Natural language queries</strong> — "What's blocked in California?" via Claude</li>
+    <li><strong>SuperGrok integration</strong> — automated local intel scanning for all active sites</li>
+    <li><strong>Map view</strong> — all sites on an interactive US map, colored by health</li>
+    <li><strong>First playbook</strong> — auto-generated from lessons + stage history data</li>
+    <li><strong>Slack alerts</strong> — "Site SM-Main just moved to blocked"</li>
+  </ul>
+
+  <p style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;color:#888;font-size:12px">Built with Python, Google Cloud Firestore, and Claude Code. No frameworks. No dependencies beyond the Firestore client library.</p>
+</div>
+</body>
+</html>

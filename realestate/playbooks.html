@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Playbooks — Great Company Name</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f9fafb; color:#111827; padding:24px; line-height:1.6; }
+  .container { max-width:1000px; margin:0 auto; }
+  h1 { font-size:24px; margin-bottom:2px; }
+  .company { color:#3b82f6; font-size:14px; font-weight:600; margin-bottom:2px; }
+  .subtitle { color:#6b7280; margin-bottom:24px; font-size:13px; }
+  .nav { margin-bottom:20px; }
+  .nav a { color:#3b82f6; text-decoration:none; margin-right:16px; font-size:13px; }
+  .nav a:hover { text-decoration:underline; }
+  a { color:#3b82f6; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .card { background:white; border-radius:12px; padding:24px; margin-bottom:20px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+  h2 { font-size:18px; margin-bottom:12px; }
+  h3 { font-size:15px; margin-top:20px; margin-bottom:8px; color:#374151; }
+  h4 { font-size:13px; margin-top:14px; margin-bottom:4px; color:#6b7280; text-transform:uppercase; letter-spacing:0.5px; }
+  p { margin-bottom:10px; font-size:14px; color:#374151; }
+  ul { margin:6px 0 12px 20px; font-size:14px; color:#374151; }
+  li { margin-bottom:4px; }
+  table { width:100%; border-collapse:collapse; font-size:13px; margin:12px 0; }
+  th { text-align:left; padding:8px 12px; background:#f9fafb; color:#6b7280; font-weight:600; font-size:11px; text-transform:uppercase; border-bottom:2px solid #e5e7eb; }
+  td { padding:8px 12px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+  .tag { display:inline-block; padding:2px 8px; border-radius:4px; font-size:11px; margin:1px; }
+  .tag-green { background:#dcfce7; color:#166534; }
+  .tag-red { background:#fecaca; color:#991b1b; }
+  .tag-yellow { background:#fef3c7; color:#92400e; }
+  .tag-blue { background:#dbeafe; color:#1e40af; }
+  .tag-gray { background:#e5e7eb; color:#374151; }
+  .callout { background:#fffbeb; border-left:4px solid #eab308; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+  .callout-green { background:#f0fdf4; border-left:4px solid #22c55e; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+  .callout-red { background:#fef2f2; border-left:4px solid #ef4444; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+  .callout-blue { background:#eff6ff; border-left:4px solid #3b82f6; padding:12px 16px; border-radius:0 8px 8px 0; margin:12px 0; font-size:13px; }
+  .timeline { border-left:3px solid #e5e7eb; margin:12px 0 12px 12px; padding-left:20px; }
+  .timeline-item { position:relative; margin-bottom:16px; }
+  .timeline-item::before { content:""; position:absolute; left:-26px; top:6px; width:10px; height:10px; border-radius:50%; background:#3b82f6; }
+  .timeline-label { font-size:12px; color:#6b7280; font-weight:600; }
+  .timeline-text { font-size:13px; color:#374151; }
+  .timeline-duration { font-size:11px; color:#3b82f6; font-weight:600; }
+  .playbook-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:16px; padding-bottom:12px; border-bottom:2px solid #e5e7eb; }
+  .playbook-meta { font-size:12px; color:#888; }
+  .step-grid { display:grid; grid-template-columns:40px 1fr; gap:0; margin:8px 0; }
+  .step-num { background:#3b82f6; color:white; width:28px; height:28px; border-radius:50%; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:700; margin-top:2px; }
+  .step-content { padding:0 0 16px 12px; border-left:2px solid #e5e7eb; margin-left:14px; }
+  .step-content:last-child { border-left:none; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav"><a href="index.html">Home</a> <a href="portfolio-report.html">Portfolio</a> <a href="risk-report.html">Risk</a> <a href="pipeline-report.html">Pipeline</a> <a href="vendor-report.html">Vendors</a> <a href="lessons-report.html">Lessons</a> <a href="hierarchy.html">Hierarchy</a> <a href="how-this-was-made.html">How This Works</a> <a href="playbooks.html"><strong>Playbooks</strong></a></div>
+  <div class="company">Great Company Name</div>
+  <h1>Playbooks</h1>
+  <div class="subtitle">Repeatable guides built from real experience across the portfolio. These get smarter as we complete more sites.</div>
+
+  <!-- ============================================================ -->
+  <!-- PLAYBOOK INDEX -->
+  <!-- ============================================================ -->
+  <div class="card">
+    <h2>Available Playbooks</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-top:8px">
+      <a href="#ev-california" style="display:block;padding:16px;border:2px solid #dbeafe;border-radius:10px;text-decoration:none;color:inherit">
+        <div style="font-weight:600;color:#3b82f6;margin-bottom:4px">EV Charging — California</div>
+        <div style="font-size:12px;color:#888">20 steps · 6-9 month typical timeline</div>
+        <div style="margin-top:6px"><span class="tag tag-blue">ev_charging</span> <span class="tag tag-gray">california</span></div>
+      </a>
+      <a href="#battery-texas" style="display:block;padding:16px;border:2px solid #dcfce7;border-radius:10px;text-decoration:none;color:inherit">
+        <div style="font-weight:600;color:#22c55e;margin-bottom:4px">Battery Storage — Texas (ERCOT)</div>
+        <div style="font-size:12px;color:#888">18 steps · 4-7 month typical timeline</div>
+        <div style="margin-top:6px"><span class="tag tag-green">battery</span> <span class="tag tag-gray">texas</span> <span class="tag tag-gray">ercot</span></div>
+      </a>
+      <a href="#solar-community" style="display:block;padding:16px;border:2px solid #fef3c7;border-radius:10px;text-decoration:none;color:inherit">
+        <div style="font-weight:600;color:#eab308;margin-bottom:4px">Community Solar — General</div>
+        <div style="font-size:12px;color:#888">16 steps · 5-8 month typical timeline</div>
+        <div style="margin-top:6px"><span class="tag tag-yellow">solar</span> <span class="tag tag-gray">multi-state</span></div>
+      </a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PLAYBOOK 1: EV CHARGING CALIFORNIA -->
+  <!-- ============================================================ -->
+  <div class="card" id="ev-california">
+    <div class="playbook-header">
+      <div>
+        <h2 style="margin-bottom:4px">EV Charging — California</h2>
+        <div class="playbook-meta">Applies to: Programs deploying Level 2 or DC fast chargers in CA · Typical site size: 3,000–10,000 sqft retail</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:#888">Based on</div>
+        <div style="font-size:20px;font-weight:700;color:#3b82f6">7 sites</div>
+        <div style="font-size:11px;color:#888">3 completed · 3 active · 1 dead</div>
+      </div>
+    </div>
+
+    <h3>Typical Timeline</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-label">Site Selection</div>
+        <div class="timeline-text">Identify candidate locations, evaluate parking, power capacity, foot traffic</div>
+        <div class="timeline-duration">2-4 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Acquisition / LOI</div>
+        <div class="timeline-text">Negotiate lease with landlord, sign LOI with penalty clause</div>
+        <div class="timeline-duration">3-6 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Due Diligence</div>
+        <div class="timeline-text">Phase I environmental, title search, utility capacity confirmation</div>
+        <div class="timeline-duration">2-4 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Entitlements</div>
+        <div class="timeline-text">Zoning confirmation, conditional use permit if needed, design review (some cities)</div>
+        <div class="timeline-duration">4-8 weeks — varies wildly by city</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Permitting</div>
+        <div class="timeline-text">Building permit, electrical permit, encroachment permit, utility interconnection</div>
+        <div class="timeline-duration">6-12 weeks — California is slow</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Construction</div>
+        <div class="timeline-text">Trenching, conduit, transformer, charger installation, signage</div>
+        <div class="timeline-duration">4-8 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Commissioning</div>
+        <div class="timeline-text">Final inspection, utility meter set, network activation, load testing</div>
+        <div class="timeline-duration">1-3 weeks</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#888"><strong>Total:</strong> 22-45 weeks (6-11 months). Our average across 3 completed sites: <strong>8.2 months</strong>.</p>
+
+    <h3>Step-by-Step Checklist</h3>
+    <h4>Acquisition Phase</h4>
+    <table>
+      <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Watch out</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Identify 3-5 candidate sites per market</td><td>Site Lead</td><td>Prioritize existing parking lots — fewer entitlements needed</td></tr>
+        <tr><td>2</td><td>Confirm utility has capacity (call utility, don't assume)</td><td>Site Lead</td><td>SoCal Edison takes 2-3 weeks to respond. LADWP is faster.</td></tr>
+        <tr><td>3</td><td>Run preliminary financial model</td><td>Finance</td><td>Include utility demand charges — can be 40% of operating cost</td></tr>
+        <tr><td>4</td><td><strong>Sign LOI with penalty clause</strong></td><td>Legal</td><td>—</td></tr>
+      </tbody>
+    </table>
+    <div class="callout-red"><strong>Lesson from Pasadena (site killed):</strong> Never start permitting before the LOI is signed. Landlord verbally agreed, then backed out after 5 months — $25K sunk. The neighboring restaurant tenant pressured him. Now we require signed LOI with a penalty clause AND landlord acknowledgment of neighboring tenants before spending a dime on permits.</div>
+
+    <h4>Permitting Phase</h4>
+    <table>
+      <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Watch out</th></tr></thead>
+      <tbody>
+        <tr><td>5</td><td>Submit building permit application</td><td>Site Lead</td><td>Include electrical load calculations — reviewers always ask</td></tr>
+        <tr><td>6</td><td>Submit utility interconnection request</td><td>Site Lead</td><td>Do this same week as building permit — they run in parallel</td></tr>
+        <tr><td>7</td><td>Submit encroachment permit (if sidewalk/ROW work)</td><td>Site Lead</td><td>Some cities require separate encroachment — check early</td></tr>
+        <tr><td>8</td><td>Attend design review (if required)</td><td>Site Lead + PM</td><td>Santa Monica, Pasadena, Beverly Hills all require this. Adds 4-6 weeks.</td></tr>
+        <tr><td>9</td><td>Order equipment (Tesla, ChargePoint, etc.)</td><td>Procurement</td><td>Lead time is 8-12 weeks. Order as soon as permit is submitted, not approved.</td></tr>
+      </tbody>
+    </table>
+    <div class="callout"><strong>Lesson from Venice:</strong> Order charger equipment when you submit the permit, not when it's approved. Tesla lead times are 8-12 weeks. If you wait for permit approval (6-12 weeks), you're adding 2-3 months of dead time. We ate 10 weeks of delay on our first site before learning this.</div>
+
+    <h4>Construction Phase</h4>
+    <table>
+      <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Watch out</th></tr></thead>
+      <tbody>
+        <tr><td>10</td><td>Mobilize electrical contractor</td><td>PM</td><td>Confirm contractor has CA C-10 electrical license</td></tr>
+        <tr><td>11</td><td>Trenching and conduit installation</td><td>Contractor</td><td>Call 811 (DigAlert) minimum 2 business days before digging</td></tr>
+        <tr><td>12</td><td>Transformer installation (if new service)</td><td>Utility</td><td>Utility installs on their schedule. Can be 4-8 weeks after approval. Nag early.</td></tr>
+        <tr><td>13</td><td>Charger mounting and wiring</td><td>Contractor</td><td>Verify charger firmware is current before mounting — field updates are painful</td></tr>
+        <tr><td>14</td><td>Signage, striping, bollards</td><td>Contractor</td><td>ADA compliance — at least one ADA-accessible charging station required</td></tr>
+      </tbody>
+    </table>
+
+    <h4>Commissioning Phase</h4>
+    <table>
+      <thead><tr><th>#</th><th>Task</th><th>Owner</th><th>Watch out</th></tr></thead>
+      <tbody>
+        <tr><td>15</td><td>Schedule final electrical inspection</td><td>PM</td><td>Inspector availability varies — book 1-2 weeks out</td></tr>
+        <tr><td>16</td><td>Utility meter set</td><td>Utility</td><td>Separate meter for EV — simplifies billing and demand charge tracking</td></tr>
+        <tr><td>17</td><td>Network activation and load testing</td><td>PM</td><td>Test every charger under load. We've had 2 DOA units out of 30.</td></tr>
+        <tr><td>18</td><td>Submit for state rebate (if applicable)</td><td>Finance</td><td>CA CALeVIP rebates: $4,500/Level 2, up to $80K/DC fast. Apply within 180 days of commissioning.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>California-Specific Gotchas</h3>
+    <div class="callout-red"><strong>CEQA:</strong> Most EV charging is categorically exempt (Class 3 or Class 32), but some cities require a CEQA checklist anyway. Ask planning department upfront — don't assume.</div>
+    <div class="callout"><strong>Design Review Boards:</strong> Santa Monica, Pasadena, Beverly Hills, Malibu all have active design review boards that add 4-8 weeks. They care about aesthetics — prepare renderings showing charger placement, landscaping screening, and lighting plans.</div>
+    <div class="callout"><strong>Fire Marshal:</strong> DC fast chargers in enclosed parking structures may trigger fire marshal review. Li-ion battery concerns are increasing post-2025. Get fire marshal sign-off in the entitlement phase, not after you've started permitting.</div>
+
+    <h3>Key Vendors (from our experience)</h3>
+    <table>
+      <thead><tr><th>Role</th><th>What to look for</th><th>Typical cost range</th></tr></thead>
+      <tbody>
+        <tr><td>Electrical contractor</td><td>CA C-10 license, EV charging experience, can handle 480V 3-phase</td><td>$15K-$40K per site (labor)</td></tr>
+        <tr><td>Equipment (Level 2)</td><td>ENERGY STAR certified, OCPP compliant, network-capable</td><td>$2K-$6K per unit</td></tr>
+        <tr><td>Equipment (DC Fast)</td><td>CHAdeMO + CCS combo, 150kW minimum, warranty 5+ years</td><td>$30K-$100K per unit</td></tr>
+        <tr><td>Civil/trenching</td><td>Boring capability for parking lot crossings, DigAlert compliance</td><td>$5K-$15K per site</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PLAYBOOK 2: BATTERY STORAGE TEXAS -->
+  <!-- ============================================================ -->
+  <div class="card" id="battery-texas">
+    <div class="playbook-header">
+      <div>
+        <h2 style="margin-bottom:4px">Battery Storage — Texas (ERCOT)</h2>
+        <div class="playbook-meta">Applies to: Grid-scale battery (BESS) projects in ERCOT territory · Typical size: 10-100MW</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:#888">Based on</div>
+        <div style="font-size:20px;font-weight:700;color:#22c55e">4 sites</div>
+        <div style="font-size:11px;color:#888">1 completed · 2 active · 1 dead</div>
+      </div>
+    </div>
+
+    <h3>Why Texas / ERCOT</h3>
+    <p>ERCOT is an energy-only market with no capacity payments — battery economics depend on price spikes and ancillary services. The grid is isolated (no interstate connections), which creates volatility = opportunity for storage. Post-Winter Storm Uri (2021), political support for grid reliability is strong.</p>
+
+    <h3>Typical Timeline</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-label">Site Identification & Land Option</div>
+        <div class="timeline-text">Find land near transmission, secure option agreement</div>
+        <div class="timeline-duration">4-8 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">ERCOT Interconnection Application</div>
+        <div class="timeline-text">Submit interconnection request, enter study queue</div>
+        <div class="timeline-duration">2-4 weeks to submit, then 6-12 months in queue</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">County Permitting</div>
+        <div class="timeline-text">Building permit, conditional use permit (most TX counties are permissive)</div>
+        <div class="timeline-duration">4-8 weeks — Texas is fast</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Equipment Procurement</div>
+        <div class="timeline-text">Battery modules (CATL, BYD, Tesla Megapack), inverters, transformer</div>
+        <div class="timeline-duration">16-24 weeks lead time</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Construction</div>
+        <div class="timeline-text">Pad, fencing, equipment install, HV interconnection</div>
+        <div class="timeline-duration">8-16 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Commissioning & ERCOT Testing</div>
+        <div class="timeline-text">Witness test, ERCOT resource registration, market participation start</div>
+        <div class="timeline-duration">4-8 weeks</div>
+      </div>
+    </div>
+    <p style="font-size:13px;color:#888"><strong>Total:</strong> 10-18 months. The ERCOT queue is the bottleneck — everything else fits around it.</p>
+
+    <h3>Critical Path: The ERCOT Queue</h3>
+    <div class="callout-red"><strong>This is the #1 risk.</strong> ERCOT interconnection studies are backlogged 12-18 months as of early 2026. Over 200GW of solar+storage in the queue. Projects can be killed by study results showing expensive network upgrades ($5-20M). Submit early, submit often. Secure queue position before finalizing land deals — an option agreement (not purchase) lets you walk away if the study comes back bad.</div>
+
+    <h3>Texas-Specific Gotchas</h3>
+    <div class="callout"><strong>Fire suppression:</strong> Post-Megapack fires in 2023-2024, Texas counties are increasingly requiring fire suppression systems and setback distances. Budget $200K-$500K for suppression and don't assume the county won't ask. Better to include it in the initial permit application than have it added as a condition.</div>
+    <div class="callout"><strong>Property tax:</strong> Texas has no state income tax but aggressive property tax. BESS equipment is taxable property. Apply for the <strong>313 tax abatement</strong> (school district) before construction starts — can save $1-3M over 10 years on a 50MW project. Some counties also offer additional abatements for renewable energy.</div>
+    <div class="callout"><strong>Community opposition is growing:</strong> Battery projects were uncontroversial in Texas until 2024. Now NIMBY groups are forming, especially in suburban counties near Austin, Dallas, and Houston. Cedar Park and Georgetown have both seen organized opposition. Present at county commissioners court early — don't let opponents define the narrative.</div>
+
+    <h3>Revenue Stacking (ERCOT)</h3>
+    <table>
+      <thead><tr><th>Revenue stream</th><th>Typical $/kW-yr</th><th>Notes</th></tr></thead>
+      <tbody>
+        <tr><td>Energy arbitrage</td><td>$40-80</td><td>Buy low (wind at night), sell high (summer peaks). Volatile.</td></tr>
+        <tr><td>Ancillary services (RRS, ECRS)</td><td>$30-60</td><td>Most reliable revenue stream. Requires ERCOT qualification.</td></tr>
+        <tr><td>Capacity (via bilateral PPA)</td><td>$20-40</td><td>ERCOT has no capacity market — negotiate directly with load-serving entities.</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PLAYBOOK 3: COMMUNITY SOLAR -->
+  <!-- ============================================================ -->
+  <div class="card" id="solar-community">
+    <div class="playbook-header">
+      <div>
+        <h2 style="margin-bottom:4px">Community Solar — General</h2>
+        <div class="playbook-meta">Applies to: Subscriber-based community solar (1-5MW) · Multi-state applicability with state-specific notes</div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-size:11px;color:#888">Based on</div>
+        <div style="font-size:20px;font-weight:700;color:#eab308">5 sites</div>
+        <div style="font-size:11px;color:#888">2 completed · 2 active · 1 dead</div>
+      </div>
+    </div>
+
+    <h3>What Makes Community Solar Different</h3>
+    <p>Unlike utility-scale solar (sell to grid) or rooftop (sell to building owner), community solar sells to <strong>subscribers</strong> — residential and commercial customers who get bill credits for their share of the array. This adds a customer acquisition and management layer that pure generation projects don't have.</p>
+
+    <h3>Typical Timeline</h3>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-label">Program Qualification</div>
+        <div class="timeline-text">Apply to state community solar program, secure allocation</div>
+        <div class="timeline-duration">4-12 weeks (varies wildly by state)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Site Selection & Land Lease</div>
+        <div class="timeline-text">Find site near load center, negotiate lease, confirm interconnection feasibility</div>
+        <div class="timeline-duration">4-8 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Interconnection Application</div>
+        <div class="timeline-text">Submit to local utility, complete interconnection study</div>
+        <div class="timeline-duration">8-20 weeks (utility-dependent)</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Permitting</div>
+        <div class="timeline-text">Building, electrical, stormwater, agricultural preservation (if applicable)</div>
+        <div class="timeline-duration">4-10 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Subscriber Acquisition</div>
+        <div class="timeline-text">Sign up residential/commercial subscribers to reach minimum threshold</div>
+        <div class="timeline-duration">Ongoing — start during permitting, must hit threshold before commissioning</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Construction</div>
+        <div class="timeline-text">Racking, panels, inverters, transformer, fencing</div>
+        <div class="timeline-duration">6-12 weeks</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-label">Commissioning</div>
+        <div class="timeline-text">Utility witness test, meter install, subscriber billing activation</div>
+        <div class="timeline-duration">2-6 weeks</div>
+      </div>
+    </div>
+
+    <h3>State-by-State Notes</h3>
+    <table>
+      <thead><tr><th>State</th><th>Program status</th><th>Key considerations</th></tr></thead>
+      <tbody>
+        <tr><td><strong>New York</strong></td><td><span class="tag tag-green">Mature</span></td><td>NY-Sun program. Strong bill credit (value of DER). Con Ed territory has highest subscriber value. Upstate sites easier to permit but lower credit value.</td></tr>
+        <tr><td><strong>Illinois</strong></td><td><span class="tag tag-green">Mature</span></td><td>IL Shines program. Lottery-based allocation — submit applications for 3-4x what you need. Adjustable block incentive declining annually.</td></tr>
+        <tr><td><strong>Minnesota</strong></td><td><span class="tag tag-green">Mature</span></td><td>Xcel Energy garden program. 1MW cap per garden. Can co-locate multiple gardens on one site. Agricultural land restrictions in some counties.</td></tr>
+        <tr><td><strong>New Jersey</strong></td><td><span class="tag tag-blue">Growing</span></td><td>Permanent community solar program started 2024. Net crediting (not net metering). Focus on LMI subscribers for bonus incentives.</td></tr>
+        <tr><td><strong>Texas</strong></td><td><span class="tag tag-yellow">Limited</span></td><td>No state community solar program. Must structure as bilateral PPAs with individual subscribers. More complex but no program cap.</td></tr>
+        <tr><td><strong>California</strong></td><td><span class="tag tag-yellow">Evolving</span></td><td>NEM 3.0 changed economics significantly. Community solar legislation (AB 2316) creating new framework. Wait for final rules before committing.</td></tr>
+      </tbody>
+    </table>
+
+    <h3>Common Mistakes</h3>
+    <div class="callout-red"><strong>Lesson — subscriber churn kills economics:</strong> Our first community solar project in Illinois had 22% annual subscriber churn. At that rate, customer acquisition costs eat the margin. Now we require 12-month minimum commitments and focus on commercial subscribers (lower churn, larger allocations). Residential-heavy portfolios need a dedicated retention strategy.</div>
+    <div class="callout"><strong>Lesson — agricultural land traps:</strong> Cheap farmland seems ideal for solar until you discover it's in an agricultural preservation district. Two of our sites needed special use permits that added 4 months and required a public hearing where farmers spoke against "taking productive land." Scout for brownfields, commercial-zoned parcels, and dual-use (agrivoltaics) opportunities first.</div>
+    <div class="callout"><strong>Lesson — interconnection cost surprises:</strong> Utility quoted $150K for interconnection. Final cost: $480K after the study revealed a transformer upgrade was needed. Always budget 2-3x the initial utility estimate for interconnection. Get a detailed cost estimate in writing before committing to land.</div>
+  </div>
+
+  <!-- ============================================================ -->
+  <div class="card" style="background:#f0fdf4;border:2px solid #22c55e">
+    <h2 style="color:#166534">The Playbook Flywheel</h2>
+    <p>These playbooks aren't written once and forgotten. They're <strong>living documents</strong> that update automatically as we complete more sites:</p>
+    <ul>
+      <li>Every dead site adds a new "watch out" to the relevant playbook</li>
+      <li>Every completed site refines the timeline estimates (real data replaces guesses)</li>
+      <li>Every vendor interaction updates the "key vendors" section with fresh ratings</li>
+      <li>Every regulatory change captured via SuperGrok updates the state-specific notes</li>
+    </ul>
+    <p><strong>A site that took 8 months in 2026 should take 5 months in 2027</strong> — because we've already seen every blocker, know every jurisdiction's quirks, and have a vendor who's done it before.</p>
+  </div>
+
+  <p style="margin-top:24px;padding-top:16px;border-top:1px solid #e5e7eb;color:#888;font-size:12px">Playbooks are auto-generated from lessons learned, stage history, and vendor data across the portfolio. Content improves with every completed site.</p>
+</div>
+</body>
+</html>

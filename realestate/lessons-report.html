@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lessons Learned — Great Company Name</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif; background:#f9fafb; color:#111827; padding:24px; }
+  .container { max-width:1200px; margin:0 auto; }
+  h1 { font-size:24px; margin-bottom:2px; }
+  .company { color:#3b82f6; font-size:14px; font-weight:600; margin-bottom:2px; }
+  .subtitle { color:#6b7280; margin-bottom:24px; font-size:13px; }
+  .card { background:white; border-radius:12px; padding:20px; margin-bottom:16px; box-shadow:0 1px 3px rgba(0,0,0,0.1); }
+  .card h2 { font-size:16px; margin-bottom:12px; color:#374151; }
+  .pills { display:flex; gap:8px; flex-wrap:wrap; }
+  .pill { text-align:center; padding:12px 20px; border-radius:8px; min-width:80px; }
+  table { width:100%; border-collapse:collapse; font-size:14px; }
+  th { text-align:left; padding:8px 12px; background:#f9fafb; color:#6b7280; font-weight:600; font-size:12px; text-transform:uppercase; border-bottom:2px solid #e5e7eb; }
+  td { padding:10px 12px; border-bottom:1px solid #f3f4f6; vertical-align:top; }
+  tr:hover { background:#f9fafb; }
+  a { color:#3b82f6; text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  .dot { display:inline-block; width:10px; height:10px; border-radius:50%; margin-right:6px; }
+  .bar-bg { width:80px; height:8px; background:#e5e7eb; border-radius:4px; overflow:hidden; display:inline-block; vertical-align:middle; margin-right:6px; }
+  .bar-fill { height:100%; border-radius:4px; }
+  .nav { margin-bottom:20px; }
+  .nav a { margin-right:16px; font-size:13px; }
+  .tag { display:inline-block; background:#e5e7eb; color:#374151; padding:2px 8px; border-radius:4px; font-size:11px; margin:1px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="nav"><a href="index.html">Home</a> <a href="portfolio-report.html">Portfolio</a> <a href="risk-report.html">Risk</a> <a href="pipeline-report.html">Pipeline</a> <a href="vendor-report.html">Vendors</a> <a href="lessons-report.html">Lessons</a> <a href="hierarchy.html">Hierarchy</a> <a href="how-this-was-made.html">How This Works</a> <a href="playbooks.html">Playbooks</a></div>
+  <div class="company">Great Company Name</div>
+  <h1>Lessons Learned</h1>
+  <div class="subtitle">Generated February 06, 2026 at 12:07 AM</div>
+  
+<div class="card"><h2>Dead Sites — Post-Mortems</h2><div style="padding:16px;border:2px solid #fecaca;border-radius:8px;background:#fef2f2;margin-bottom:12px">
+        <div style="display:flex;justify-content:space-between">
+            <div><strong style="font-size:16px">PAS-Colorado</strong> <span style="color:#888">— Pasadena Colorado Blvd, Pasadena, CA</span></div>
+            <div style="color:#ef4444;font-weight:600">Killed 2026-02-01</div>
+        </div>
+        <div style="margin-top:8px"><strong>Reason:</strong> Landlord backed out after permit delays — pressured by neighboring tenant</div>
+        <div style="margin-top:4px;display:flex;gap:20px;font-size:13px;color:#888">
+            <span>Sunk cost: <strong style="color:#111">$25,000</strong></span>
+            <span>Time invested: <strong style="color:#111">5 months</strong></span>
+            <span>Could revive: <strong style="color:#111">Yes</strong></span>
+        </div>
+        <div style='margin-top:4px;font-size:13px;color:#888'>Revive if: If landlord situation changes or restaurant lease expires</div>
+    </div></div>
+<div class="card"><h2>Lessons Learned</h2><div style="padding:16px;border:1px solid #e5e7eb;border-radius:8px;margin-bottom:12px">
+        <div style="font-size:16px;font-weight:600">Get landlord commitment in writing early</div>
+        <div style="margin-top:4px;font-size:12px;color:#888">
+            <span class="tag">legal</span>
+            Source: site-pasadena-dead-01 · 2026-02-01 · Sarah
+        </div>
+        <div style="margin-top:8px"><strong>Situation:</strong> Landlord verbally agreed, then backed out after 5 months of work. Neighboring tenant pressured him.</div>
+        <div style="margin-top:4px"><strong>What didn't work:</strong> Relied on verbal commitment. Started permitting before signed LOI.</div>
+        <div style="margin-top:8px;padding:10px;background:#f0fdf4;border-radius:6px;border-left:4px solid #22c55e">
+            <strong>Recommendation:</strong> Never start permitting without signed LOI with penalty clause. Get landlord to acknowledge neighboring tenants before signing.
+        </div>
+        <div style="margin-top:6px"><span class="tag">landlord</span> <span class="tag">lease</span> <span class="tag">legal</span> <span class="tag">critical</span> </div>
+    </div></div>
+<div class="card"><h2>Key Decisions</h2><div style="padding:8px 0;border-bottom:1px solid #f3f4f6"><span style="color:#3b82f6;font-weight:600">SM-Main</span> <span style="color:#888;font-size:12px">2026-02-01 · Sarah</span> <span class="tag" style="background:#dbeafe;color:#3b82f6">Reversible</span><div style="margin-top:2px"><strong>Go with 8+2 charger config instead of 10 Level 2</strong></div><div style="font-size:13px;color:#888">DC fast chargers have higher utilization, worth the cost</div></div><div style="padding:8px 0;border-bottom:1px solid #f3f4f6"><span style="color:#3b82f6;font-weight:600">PAS-Colorado</span> <span style="color:#888;font-size:12px">2026-02-01 · David</span> <span class="tag" style="background:#dbeafe;color:#3b82f6">Reversible</span><div style="margin-top:2px"><strong>Kill site — landlord non-negotiable</strong></div><div style="font-size:13px;color:#888">3 months sunk, no leverage. Better to move on.</div></div></div>
+
+</div>
+</body>
+</html>
